@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStationAlphaOne - Epic Space Adventure Game | Play Now Online</title>
+    <meta name="description" content="Experience GameStationAlphaOne, the ultimate space adventure game. Play this thrilling online game featuring stunning graphics, epic battles, and immersive gameplay directly in your browser.">
+    <meta name="keywords" content="GameStationAlphaOne, online game, space game, browser game, adventure game, free game">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="GameStationAlphaOne">
+    <link rel="canonical" href="https://gamestationalphaone.com/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="GameStationAlphaOne - Epic Space Adventure Game">
+    <meta property="og:description" content="Experience the ultimate space adventure game with stunning graphics and immersive gameplay.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gamestationalphaone.com/">
+    <meta property="og:site_name" content="GameStationAlphaOne">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GameStationAlphaOne - Epic Space Adventure Game">
+    <meta name="twitter:description" content="Experience the ultimate space adventure game with stunning graphics and immersive gameplay.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "GameStationAlphaOne",
+        "description": "Epic space adventure game with stunning graphics and immersive gameplay",
+        "url": "https://gamestationalphaone.com/",
+        "genre": ["Adventure", "Space", "Action"],
+        "playMode": "SinglePlayer",
+        "applicationCategory": "Game"
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #007aff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007aff;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #6e6e73;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .game-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .game-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .game-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            background: #000;
+        }
+
+        .game-placeholder {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0c0c0f 0%, #1a1a2e 50%, #16213e 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .game-preview {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 40px;
+            max-width: 500px;
+        }
+
+        .game-logo {
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .game-logo h3 {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 0;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .preview-description p {
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-bottom: 25px;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            flex: 1;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #b0b0b0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .game-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .launch-button, .info-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .launch-button {
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .launch-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .info-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .access-note {
+            padding: 15px;
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .access-note p {
+            color: #ffc107;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Space Animation */
+        .space-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        .star-1 { width: 2px; height: 2px; top: 20%; left: 10%; animation-delay: 0s; }
+        .star-2 { width: 3px; height: 3px; top: 30%; left: 80%; animation-delay: 0.5s; }
+        .star-3 { width: 2px; height: 2px; top: 70%; left: 20%; animation-delay: 1s; }
+        .star-4 { width: 4px; height: 4px; top: 60%; left: 90%; animation-delay: 1.5s; }
+        .star-5 { width: 2px; height: 2px; top: 80%; left: 60%; animation-delay: 0.3s; }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .planet-1 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            top: 10%;
+            right: -40px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .planet-2 {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #4834d4, #686de0);
+            bottom: 10%;
+            left: -30px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Remove old error styles */
+        .game-error, .error-content, .error-icon, .error-solutions, 
+        .retry-button, .new-tab-button, .error-note {
+            display: none;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #007aff, #5856d6);
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #424245;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #6e6e73;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            color: white;
+            text-align: center;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-top: 40px;
+        }
+
+        .cta-title {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .play-button {
+            background: white;
+            color: #007aff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: #1d1d1f;
+            color: #a1a1a6;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #a1a1a6;
+            margin-bottom: 0;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .game-container {
+                padding: 20px;
+            }
+            
+            .game-wrapper {
+                height: 400px;
+            }
+            
+            .game-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .game-actions {
+                flex-direction: column;
+            }
+            
+            .launch-button, .info-button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .cta-section {
+                padding: 35px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .game-wrapper {
+                height: 300px;
+            }
+            
+            .game-preview {
+                padding: 20px;
+            }
+            
+            .logo-icon {
+                font-size: 48px;
+            }
+            
+            .game-logo h3 {
+                font-size: 20px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+
+        /* Loading animation for game frame */
+        .game-frame {
+            position: relative;
+        }
+
+        .game-frame::before {
+            content: 'Loading Game...';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #007aff;
+            font-size: 18px;
+            font-weight: 500;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">GameStationAlphaOne</a>
+                <ul class="nav-links">
+                    <li><a href="#game">Play Game</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>GameStationAlphaOne</h1>
+                <p class="tagline">Embark on the ultimate space adventure with cutting-edge gameplay and stunning visuals.</p>
+            </section>
+
+            <section id="game" class="game-container">
+                <div class="game-wrapper">
+                    <!-- Game Demo/Placeholder -->
+                    <div id="gamePlaceholder" class="game-placeholder">
+                        <div class="game-preview">
+                            <div class="preview-content">
+                                <div class="game-logo">
+                                    <div class="logo-icon">🚀</div>
+                                    <h3>GameStationAlphaOne</h3>
+                                </div>
+                                <div class="preview-description">
+                                    <p>Experience epic space battles and exploration</p>
+                                    <div class="game-stats">
+                                        <div class="stat">
+                                            <span class="stat-number">4.8</span>
+                                            <span class="stat-label">★ Rating</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">1M+</span>
+                                            <span class="stat-label">Players</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">Free</span>
+                                            <span class="stat-label">To Play</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game-actions">
+                                    <button onclick="launchGame()" class="launch-button">
+                                        🎮 Launch Game
+                                    </button>
+                                    <button onclick="showGameInfo()" class="info-button">
+                                        ℹ️ Game Info
+                                    </button>
+                                </div>
+                                <div class="access-note">
+                                    <p><strong>Note:</strong> Due to security restrictions, the game opens in a new window for the best experience.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Animated background -->
+                            <div class="space-animation">
+                                <div class="star star-1"></div>
+                                <div class="star star-2"></div>
+                                <div class="star star-3"></div>
+                                <div class="star star-4"></div>
+                                <div class="star star-5"></div>
+                                <div class="planet planet-1"></div>
+                                <div class="planet planet-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hidden iframe for potential future use -->
+                    <iframe 
+                        id="gameFrame"
+                        src="" 
+                        class="game-frame"
+                        title="GameStationAlphaOne - Online Space Adventure Game"
+                        allow="fullscreen; gamepad; microphone; camera"
+                        loading="lazy"
+                        style="display: none;">
+                    </iframe>
+                </div>
+            </section>
+
+            <section id="about" class="content-section">
+                <h2>About GameStationAlphaOne</h2>
+                <p>GameStationAlphaOne represents the pinnacle of browser-based gaming, delivering an immersive space adventure that pushes the boundaries of what's possible in online entertainment. Set in a vast galactic frontier, players take command of advanced spacecraft and navigate through mysterious star systems filled with challenges, discoveries, and epic encounters.</p>
+                
+                <p>This revolutionary gaming experience combines cutting-edge Unity technology with intuitive gameplay mechanics, creating a seamless adventure that runs flawlessly across all devices. Whether you're exploring uncharted territories, engaging in tactical combat, or uncovering ancient cosmic mysteries, GameStationAlphaOne offers hours of captivating gameplay without any downloads or installations required.</p>
+                
+                <p>The game features stunning visual effects, dynamic soundscapes, and responsive controls that adapt perfectly to both desktop and mobile platforms. With regular content updates and an ever-expanding universe to explore, GameStationAlphaOne continues to evolve, offering players new challenges and adventures with each visit.</p>
+            </section>
+
+            <section id="features" class="content-section">
+                <h2>Game Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">Advanced Spacecraft</h3>
+                        <p class="feature-description">Command state-of-the-art vessels with unique capabilities and customizable configurations for every mission type.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🌌</div>
+                        <h3 class="feature-title">Vast Universe</h3>
+                        <p class="feature-description">Explore countless star systems, each with unique planets, phenomena, and secrets waiting to be discovered.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Instant Play</h3>
+                        <p class="feature-description">No downloads required. Jump directly into the action from your browser on any device, anywhere, anytime.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3 class="feature-title">Intuitive Controls</h3>
+                        <p class="feature-description">Responsive and adaptive control scheme that works perfectly on both desktop computers and mobile devices.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3 class="feature-title">Epic Missions</h3>
+                        <p class="feature-description">Engage in challenging quests, tactical battles, and exploration missions that test your skills and strategy.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">Regular Updates</h3>
+                        <p class="feature-description">Continuous content expansion with new features, missions, and gameplay elements added regularly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>System Requirements</h2>
+                <p><strong>Minimum Requirements:</strong> GameStationAlphaOne is optimized to run smoothly on modern web browsers including Chrome, Firefox, Safari, and Edge. The game supports WebGL and requires a stable internet connection for optimal performance.</p>
+                
+                <p><strong>Recommended Specifications:</strong> For the best gaming experience, we recommend using a device with at least 4GB of RAM and a dedicated graphics card or integrated graphics with WebGL 2.0 support. The game automatically adjusts quality settings based on your device's capabilities to ensure smooth gameplay.</p>
+                
+                <p><strong>Mobile Compatibility:</strong> GameStationAlphaOne is fully optimized for mobile devices, including smartphones and tablets running iOS 12+ or Android 8+. The responsive design and touch-friendly controls provide an excellent gaming experience on screens of all sizes.</p>
+            </section>
+
+            <div class="cta-section">
+                <h2 class="cta-title">Ready for Adventure?</h2>
+                <p class="cta-description">Join millions of players exploring the galaxy in GameStationAlphaOne</p>
+                <a href="#game" class="play-button">Play Now - It's Free!</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 GameStationAlphaOne.com. All rights reserved. Experience the ultimate space adventure game online.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Game launch functions
+            window.launchGame = function() {
+                // Show loading message
+                const button = event.target;
+                if (!button) return;
+                
+                const originalText = button.innerHTML;
+                button.innerHTML = '🚀 Launching...';
+                button.disabled = true;
+                
+                // Attempt to open game in new window
+                setTimeout(() => {
+                    const gameWindow = window.open(
+                        'https://cloud.onlinegames.io/games/2025/unity/gametation-alphaone/index-og.html', 
+                        'GameStationAlphaOne',
+                        'width=1200,height=800,scrollbars=no,resizable=yes'
+                    );
+                    
+                    // Reset button after attempt
+                    setTimeout(() => {
+                        if (button) {
+                            button.innerHTML = originalText;
+                            button.disabled = false;
+                        }
+                    }, 2000);
+                    
+                    // Check if popup was blocked
+                    if (!gameWindow || gameWindow.closed || typeof gameWindow.closed == 'undefined') {
+                        alert('Pop-up blocked! Please allow pop-ups for this site and try again, or visit the game directly at: https://cloud.onlinegames.io/games/2025/unity/gametation-alphaone/index-og.html');
+                    }
+                }, 1000);
+            };
+
+            window.showGameInfo = function() {
+                alert('GameStationAlphaOne Features:\n\n🚀 Epic space exploration\n🌌 Vast universe to discover\n⚡ Instant browser-based gameplay\n🎮 Cross-platform compatibility\n🏆 Challenging missions\n🔄 Regular content updates\n\nClick "Launch Game" to start your adventure!');
+            };
+        });
+
+        // Simple analytics tracking (placeholder)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track page view
+            console.log('GameStationAlphaOne page loaded');
+            
+            // Track game play attempts
+            gameFrame.addEventListener('click', function() {
+                console.log('Game interaction detected');
+            });
+        });
+    </script>
+</body>
+</html>
